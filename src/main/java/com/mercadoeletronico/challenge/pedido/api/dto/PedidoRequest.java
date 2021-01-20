@@ -1,5 +1,6 @@
 package com.mercadoeletronico.challenge.pedido.api.dto;
 
+import com.mercadoeletronico.challenge.commons.api.validators.Unique;
 import com.mercadoeletronico.challenge.item.api.dto.ItemRequest;
 import com.mercadoeletronico.challenge.pedido.domain.Pedido;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 public class PedidoRequest {
 
     @NotEmpty(message = "{PedidoRequest.pedido.NotEmpty}")
+    @Unique(entidade = Pedido.class, atributo = "codigoPedido", message = "{Pedido.codigoPedido.Unique}")
     private String pedido;
 
     private List<ItemRequest> itens;
